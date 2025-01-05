@@ -1,0 +1,29 @@
+Theory
+Problem Statement:
+Given an array nums of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times. Assume that the majority element always exists.
+
+Approach:
+
+The Boyer-Moore Voting Algorithm is an optimal algorithm to find the majority element in linear time and constant space.
+The key insight of the algorithm is that we can maintain a candidate for the majority element and a count of how many times this candidate has been "validated" by other elements.
+The algorithm works by "canceling out" pairs of different elements. If the count reaches zero, we switch to a new candidate.
+The element that remains after iterating through the array is the majority element.
+Algorithm:
+
+Initialization:
+Set num as the first element of the array and initialize count = 1.
+Iterate through the array:
+For each element:
+If the element is the same as num, increment count.
+If the element is different from num, decrement count.
+If count becomes zero, update num to the current element and reset count to 1.
+Return num as the majority element.
+Complexity:
+
+Time Complexity: 
+𝑂(𝑛)
+O(n), where 𝑛
+n is the size of the array. We only need a single pass through the array.
+Space Complexity: 
+𝑂(1)
+O(1), since we are using only a constant amount of space.
