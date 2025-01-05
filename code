@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        // If the array has only one element, it's trivially the majority element.
+        if (nums.size() == 1)
+            return nums[0];
+        
+        // Initialize the candidate for majority element and its count
+        int count = 1;
+        int num = nums[0]; // The first element is initially the candidate
+        int n = nums.size();
+        
+        // Iterate through the rest of the array
+        for (int i = 1; i < n; i++) {
+            // If the current element is the same as the candidate, increase the count
+            if (nums[i] == num)
+                count++;
+            else
+                count--;  // Otherwise, decrease the count
+            
+            // If the count reaches zero, change the candidate and reset count to 1
+            if (count == 0) {
+                num = nums[i];  // Update candidate to current element
+                count = 1;      // Reset count
+            }
+        }
+        
+        // After the loop, num will hold the majority element
+        return num;
+    }
+};
